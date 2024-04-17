@@ -7,7 +7,7 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = 3003
 server_socket.bind(('127.0.0.1', port))
 server_socket.listen(5) 
-print("Socket listening on port ", port)
+# print("Socket listening on port ", port)
 
 while True:
     # Accept incoming connections
@@ -17,7 +17,7 @@ while True:
     data = conn.recv(1024).decode('utf-8')
     onion = json.loads(data)
     onion = onion[1:]
-    print(onion)
+    print("ROUTER 3", onion)
     conn.close()
     
     # Create a client socket to send data elsewhere

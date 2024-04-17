@@ -1,7 +1,8 @@
-import os
+
 import subprocess
 
-# Define the commands to run
+#This is a central function that runs all of the routers, client, and server
+#Have to run pkill -9 python3 after every run to clear the process
 
 
 if __name__ == "__main__":
@@ -19,7 +20,7 @@ if __name__ == "__main__":
     for cmd in server_commands:
         process = subprocess.Popen(cmd)
         server_processes.append(process)
+    
+    
         
-        # Add more server commands as needed
-
- 
+        
