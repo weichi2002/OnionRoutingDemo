@@ -4,7 +4,7 @@ import json
 
 # next create a socket object
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-port = 4000
+port = 5000
 server_socket.bind(('127.0.0.1', port))
 
 # put the socket into listening mode
@@ -22,7 +22,6 @@ while True:
     data = conn.recv(1024).decode('utf-8')
     onion = json.loads(data)
     onion = onion[1:]
-    print("=" * 100)
     print(f"Message: {onion[0]}")
     onion = onion[1:]
 
@@ -32,7 +31,6 @@ while True:
     sock_client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock_client.sendto(b"Roger that! TO INFINITY AND BEYOND", ("127.0.0.1", onion[0]))
     print("Server response sent")
-    print("=" * 100)
 
     
     # Create a client socket to send data elsewhere

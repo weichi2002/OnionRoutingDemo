@@ -6,6 +6,8 @@ import subprocess
 
 
 if __name__ == "__main__":
+    
+    #make more routers
     server_commands = [
     ['python3', 'server.py'],
     ['python3', 'r1.py'],

@@ -7,7 +7,7 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = 3005
 server_socket.bind(('127.0.0.1', port))
 server_socket.listen(5) 
-# print("Socket listening on port ", port)
+print("Socket listening on port ", port)
 
 while True:
     # Accept incoming connections

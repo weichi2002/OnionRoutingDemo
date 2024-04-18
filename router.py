@@ -1,13 +1,21 @@
 import socket
 import json
+import sys
+import random
+import time
 
-# Create the server socket outside the loop
+
+port = int(sys.argv[1])
+delay = int(sys.argv[2])
+random_delay = random.randint(0, delay)
+# print("random delay ", random_delay)
+
+
+#initalize socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-port = 3004
 server_socket.bind(('127.0.0.1', port))
 server_socket.listen(5) 
-print("Socket listening on port ", port)
+# print("Socket listening on port ", port)
 
 while True:
     # Accept incoming connections
@@ -17,8 +25,11 @@ while True:
     data = conn.recv(1024).decode('utf-8')
     onion = json.loads(data)
     onion = onion[1:]
-    print("ROUTER 4", onion)
+    print(f"ROUTER {port} ", onion)
     conn.close()
+    
+    #simulate delay
+    time.sleep(random_delay)
     
     # Create a client socket to send data elsewhere
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
