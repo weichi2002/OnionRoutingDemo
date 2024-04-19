@@ -22,15 +22,15 @@ while True:
     data = conn.recv(1024).decode('utf-8')
     onion = json.loads(data)
     onion = onion[1:]
-    print(f"Message: {onion[0]}")
+    print(f"Server received: {onion[0]}")
+    
     onion = onion[1:]
 
     conn.close()
 
 
     sock_client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock_client.sendto(b"Roger that! TO INFINITY AND BEYOND", ("127.0.0.1", onion[0]))
-    print("Server response sent")
+    sock_client.sendto(b"Aye matey!", ("127.0.0.1", onion[0]))
 
     
     # Create a client socket to send data elsewhere

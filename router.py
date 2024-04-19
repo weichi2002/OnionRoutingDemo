@@ -25,7 +25,7 @@ while True:
     data = conn.recv(1024).decode('utf-8')
     onion = json.loads(data)
     onion = onion[1:]
-    print(f"ROUTER {port} ", onion)
+    print(f"ROUTER {port} received the onion packet, sending to ROUTER {onion[0]} next")
     conn.close()
     
     #simulate delay

@@ -1,28 +1,34 @@
-
+import sys
 import subprocess
-
-#This is a central function that runs all of the routers, client, and server
-#Have to run pkill -9 python3 after every run to clear the process
+import os
 
 
-if __name__ == "__main__":
+def main(n, delay):
     
-    #make more routers
-    server_commands = [
-    ['python3', 'server.py'],
-    ['python3', 'r1.py'],
-    ['python3', 'r2.py'],
-    ['python3', 'r3.py'],
-    ['python3', 'r4.py'],
-    ['python3', 'r5.py'],
-    ['python3', 'client.py'],
+    portNumber = 3000
+    commands = [
+        #add the routers here
+        ['python3', 'server.py'],
+        ['python3', 'client.py', str(n)],
     ]
     
-    server_processes = []
-    for cmd in server_commands:
-        process = subprocess.Popen(cmd)
-        server_processes.append(process)
-    
-    
+    for _ in range(n):
+        portNumber+=1
+        cmd = ['python3', "router.py", str(portNumber), str(delay)]
+        commands.insert(0, cmd)
         
         
+    for cmd in commands:
+        subprocess.Popen(cmd)
+        
+    print(f"Type \"kill\" to terminate the process") #somehow the subprocess will keep running even if you kill the current process
+    if input() == "kill":
+        os.system("pkill -9 python3")
+
+
+    
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        print("usage: python3 demo.py <# of routers *less than 150> <delay>")
+        exit(1)
+    main(int(sys.argv[1]), int(sys.argv[2]))

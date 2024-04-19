@@ -3,16 +3,21 @@
 import socket
 import json
 import random
+import sys
 
 #list of possible routers
-onion = [3001, 3002, 3003, 3004, 3005]
+n = int(sys.argv[1])
 
+onion = []
+for i in range(1, n+1):
+    onion.append(3000 + i)
+    
 #randomly choose the order
 random.shuffle(onion)
 
 #construct the onion packet
                 #server      #message                          #client
-onion.extend([4000, "THERE IS A SNAKE IN MY BOOT", 4001])
+onion.extend([5000, "What did the pirate say when he turned 80?", 5001])
 
 
 #send the onion packet to the router using client socket
@@ -29,7 +34,7 @@ client_socket.close()
 
 #receive the message back from the server
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind(("127.0.0.1", 4001))
+sock.bind(("127.0.0.1", 5001))
 data, addr = sock.recvfrom(1024)
 print(f"Client received: {data.decode('utf-8')}")
  
