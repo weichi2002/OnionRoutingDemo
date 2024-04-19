@@ -17,7 +17,7 @@ random.shuffle(onion)
 
 #construct the onion packet
                 #server      #message                          #client
-onion.extend([5000, "What did the pirate say when he turned 80?", 5001])
+onion.extend([5000, "How many flies does it take to screw in a lightbulb?", 5001])
 
 
 #send the onion packet to the router using client socket

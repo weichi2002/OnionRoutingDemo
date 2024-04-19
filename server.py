@@ -9,7 +9,7 @@ server_socket.bind(('127.0.0.1', port))
 
 # put the socket into listening mode
 server_socket.listen(5)
-print(f"server listening on port {port}")
+# print(f"server listening on port {port}")
 
 
 
@@ -30,7 +30,7 @@ while True:
 
 
     sock_client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock_client.sendto(b"Aye matey!", ("127.0.0.1", onion[0]))
+    sock_client.sendto(b"Only two. The hard part is getting them into the lightbulb.", ("127.0.0.1", onion[0]))
 
     
     # Create a client socket to send data elsewhere
