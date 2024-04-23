@@ -15,8 +15,9 @@ for i in range(1, n+1):
 #randomly choose the order
 random.shuffle(onion)
 
+
 #construct the onion packet
-                #server      #message                          #client
+            #server      #message                                       #client
 onion.extend([5000, "How many flies does it take to screw in a lightbulb?", 5001])
 
 

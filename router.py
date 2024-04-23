@@ -7,7 +7,7 @@ import time
 
 port = int(sys.argv[1])
 delay = int(sys.argv[2])
-random_delay = random.randint(0, delay)
+random_delay = random.random() * delay
 # print("random delay ", random_delay)
 
 

@@ -1,6 +1,5 @@
 import sys
 import subprocess
-import os
 
 
 def main(n, delay):
@@ -17,14 +16,17 @@ def main(n, delay):
         cmd = ['python3', "router.py", str(portNumber), str(delay)]
         commands.insert(0, cmd)
         
-        
+    subprocesses = []
     for cmd in commands:
-        subprocess.Popen(cmd)
+        subprocesses.append(subprocess.Popen(cmd))
         
-    print(f"Type \"kill\" to terminate the process") #somehow the subprocess will keep running even if you kill the current process
-    if input() == "kill":
-        os.system("pkill -9 python3")
-
+    while(True):
+        if input() == "kill":
+            for proc in subprocesses:
+                proc.terminate()
+            break
+        else:
+            print("Type \"kill\" to terminate the process")
 
     
 if __name__ == '__main__':

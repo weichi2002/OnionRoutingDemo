@@ -24,6 +24,7 @@ while True:
     onion = onion[1:]
     print(f"Server received: {onion[0]}")
     
+    
     onion = onion[1:]
 
     conn.close()
