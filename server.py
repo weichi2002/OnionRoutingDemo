@@ -31,7 +31,7 @@ while True:
 
 
     sock_client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock_client.sendto(b"Only two. The hard part is getting them into the lightbulb.", ("127.0.0.1", onion[0]))
+    sock_client.sendto(b"Aye Matey", ("127.0.0.1", onion[0]))
 
     
     # Create a client socket to send data elsewhere
