@@ -1,5 +1,3 @@
-
-# Import socket module
 import socket
 import json
 import random

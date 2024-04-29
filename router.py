@@ -11,17 +11,15 @@ random_delay = random.random() * delay
 # print("random delay ", random_delay)
 
 
-#initalize socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(('127.0.0.1', port))
 server_socket.listen(5) 
 # print("Socket listening on port ", port)
 
 while True:
-    # Accept incoming connections
     conn, addr = server_socket.accept()
     
-    # Receive data from the client
+    # Receive data
     data = conn.recv(1024).decode('utf-8')
     onion = json.loads(data)
     print(f"ROUTER {port} received the onion packet, sending to ROUTER {onion[1]} next")

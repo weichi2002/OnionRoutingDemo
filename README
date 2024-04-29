@@ -8,13 +8,13 @@ delays along each hop.
 
 To run the program, enter the following command in the terminal
 
-python3 demo.py <# of routers> <delay>
+python3 demo.py <# of routers> <# delay>
 
 Ex:  python3 demo.py 10 2
 
 This creates ten routers and simulates possible delay on each hop between 0 to 2 seconds
 
 *Type "kill" in the terminal to kill the subprocess after each run. Or the subprocess will 
-live on and causes ports in use error
+live on and causes ports in use error, which you have to run "pkill -9 python3" to kill the subprocess.
 
 
